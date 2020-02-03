@@ -13,6 +13,7 @@
 		6CBE1B2323E8D3400056039C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE1B2123E8D3400056039C /* Main.storyboard */; };
 		6CBE1B2523E8D3410056039C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE1B2423E8D3410056039C /* Assets.xcassets */; };
 		6CBE1B2823E8D3410056039C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE1B2623E8D3410056039C /* LaunchScreen.storyboard */; };
+		6CBE1B3423E8D81D0056039C /* UInt128.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1B3323E8D81D0056039C /* UInt128.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6CBE1B2423E8D3410056039C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CBE1B2723E8D3410056039C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CBE1B2923E8D3410056039C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CBE1B3323E8D81D0056039C /* UInt128.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt128.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		6CBE1B1A23E8D3400056039C /* Perfect Paper Passwords */ = {
 			isa = PBXGroup;
 			children = (
+				6CBE1B3323E8D81D0056039C /* UInt128.swift */,
 				6CBE1B1B23E8D3400056039C /* AppDelegate.swift */,
 				6CBE1B1D23E8D3400056039C /* SceneDelegate.swift */,
 				6CBE1B1F23E8D3400056039C /* ViewController.swift */,
@@ -141,6 +144,7 @@
 				6CBE1B2023E8D3400056039C /* ViewController.swift in Sources */,
 				6CBE1B1C23E8D3400056039C /* AppDelegate.swift in Sources */,
 				6CBE1B1E23E8D3400056039C /* SceneDelegate.swift in Sources */,
+				6CBE1B3423E8D81D0056039C /* UInt128.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
