@@ -7,34 +7,82 @@
 //
 
 import UIKit
-import CryptoKit
 
 class ViewController: UIViewController {
-
-    let alphabet = "! # % + 2  3 4 5 6 7 8 9 : = ? @ A B C D E F G H J K L M N P R S T U V W X Y Z a b c d e f g h i j k m n o p q r s t u v w x y z"
+    
+    @IBOutlet weak var contentSymmetricKeyTextField: UITextField!
+    @IBOutlet weak var contentAlphabetTextField: UITextView!
+    @IBOutlet weak var collectionView: UICollectionView?
+    
+    private var data: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        let alphabetArray = alphabet.split(separator: " ")
-        let key = SymmetricKey(size: .bits256)
-        //        let legibleSymmetrickey = key.withUnsafeBytes {
-        //            return Data(Array($0)) /// Asi lo usamos para mandarlo al keychain. Si lo queremos ver usamos b64
-        //        }
-        var pages : [String] = []
-        var counter : UInt128 = 0
-        
-        for index in 0...128 {
-            counter = UInt128(index)
-            let data = Data(bytes: &counter, count: MemoryLayout.size(ofValue: counter))
-            let encryptedContent = try! AES.GCM.seal(data, using: key).combined!
-            let intValueAes = encryptedContent.withUnsafeBytes { $0.load(as: UInt128.self) }
-            let residuo : Int = Int(intValueAes % 64)
-            pages.append(String(alphabetArray[residuo]))
-        }
-        print(pages)
+        setCollectionViewUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentAlphabetTextField.text = PerfectPaperPasswordsAlgorithm.runAlgorithm.alphabet
+        loadCurrentDataFromSave()
+    }
+    
+    @IBAction func generateNewSymmetricKeyButton() {
+        bindData()
+    }
+    
+    private func bindData() {
+        PerfectPaperPasswordsAlgorithm.runAlgorithm.generateNewSymmetricKey()
+        contentSymmetricKeyTextField.text = PerfectPaperPasswordsAlgorithm.runAlgorithm.getLegibleSymmetricKey()
+        let passwords = PerfectPaperPasswordsAlgorithm.runAlgorithm.algorithmPPP()
+        data = PerfectPaperPasswordsAlgorithm.getCipheredArrays(from: passwords)
+        saveCurrentData()
+        collectionView?.reloadData()
+    }
+    
+    private func setCollectionViewUp() {
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+    }
+    
+    private func saveCurrentData() {
+        let defaults = UserDefaults.standard
+        defaults.set(data, forKey: "currentData")
+        defaults.set(contentSymmetricKeyTextField.text ?? "", forKey: "symetricKey")
+        defaults.synchronize()
+    }
+    
+    private func loadCurrentDataFromSave() {
+        let defaults = UserDefaults.standard
+        let data = defaults.array(forKey: "currentData") as?  [[String]]
+        let symetricKey =  defaults.string(forKey: "symetricKey")
+        contentSymmetricKeyTextField.text = symetricKey
+        self.data = data ?? []
+        collectionView?.reloadData()
+    }
+}
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data[section].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "keyCell", for: indexPath)
+        if let keyCell = cell as? KeyCell {
+            let value = data[indexPath.section][indexPath.row]
+            keyCell.update(withValue: value)
+        }
+        return cell
+    }
+    
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 6
+        return CGSize(width: width, height: 50)
+    }
 }
 

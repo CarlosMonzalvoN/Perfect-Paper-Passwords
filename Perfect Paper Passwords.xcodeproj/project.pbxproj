@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C1CC8B923EB35DE00766192 /* PerfectPaperPasswordsAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CC8B823EB35DE00766192 /* PerfectPaperPasswordsAlgorithm.swift */; };
 		6CBE1B1C23E8D3400056039C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1B1B23E8D3400056039C /* AppDelegate.swift */; };
 		6CBE1B1E23E8D3400056039C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1B1D23E8D3400056039C /* SceneDelegate.swift */; };
 		6CBE1B2023E8D3400056039C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1B1F23E8D3400056039C /* ViewController.swift */; };
@@ -14,9 +15,12 @@
 		6CBE1B2523E8D3410056039C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE1B2423E8D3410056039C /* Assets.xcassets */; };
 		6CBE1B2823E8D3410056039C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE1B2623E8D3410056039C /* LaunchScreen.storyboard */; };
 		6CBE1B3423E8D81D0056039C /* UInt128.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1B3323E8D81D0056039C /* UInt128.swift */; };
+		6CD3410023EB944600584264 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD340FF23EB944600584264 /* String+extension.swift */; };
+		6CD704A723EE4BA000F031FF /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD704A623EE4BA000F031FF /* KeyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C1CC8B823EB35DE00766192 /* PerfectPaperPasswordsAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPaperPasswordsAlgorithm.swift; sourceTree = "<group>"; };
 		6CBE1B1823E8D3400056039C /* Perfect Paper Passwords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Perfect Paper Passwords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CBE1B1B23E8D3400056039C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CBE1B1D23E8D3400056039C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		6CBE1B2723E8D3410056039C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CBE1B2923E8D3410056039C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CBE1B3323E8D81D0056039C /* UInt128.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt128.swift; sourceTree = "<group>"; };
+		6CD340FF23EB944600584264 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		6CD704A623EE4BA000F031FF /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,43 @@
 		6CBE1B1A23E8D3400056039C /* Perfect Paper Passwords */ = {
 			isa = PBXGroup;
 			children = (
-				6CBE1B3323E8D81D0056039C /* UInt128.swift */,
+				6CD3412223ECEF1F00584264 /* ExtensionOfString */,
+				6CD3412123ECEF0300584264 /* Int128bits */,
+				6CD3412323ECEF5800584264 /* Models */,
 				6CBE1B1B23E8D3400056039C /* AppDelegate.swift */,
 				6CBE1B1D23E8D3400056039C /* SceneDelegate.swift */,
 				6CBE1B1F23E8D3400056039C /* ViewController.swift */,
+				6CD704A623EE4BA000F031FF /* KeyCell.swift */,
 				6CBE1B2123E8D3400056039C /* Main.storyboard */,
 				6CBE1B2423E8D3410056039C /* Assets.xcassets */,
 				6CBE1B2623E8D3410056039C /* LaunchScreen.storyboard */,
 				6CBE1B2923E8D3410056039C /* Info.plist */,
 			);
 			path = "Perfect Paper Passwords";
+			sourceTree = "<group>";
+		};
+		6CD3412123ECEF0300584264 /* Int128bits */ = {
+			isa = PBXGroup;
+			children = (
+				6CBE1B3323E8D81D0056039C /* UInt128.swift */,
+			);
+			path = Int128bits;
+			sourceTree = "<group>";
+		};
+		6CD3412223ECEF1F00584264 /* ExtensionOfString */ = {
+			isa = PBXGroup;
+			children = (
+				6CD340FF23EB944600584264 /* String+extension.swift */,
+			);
+			path = ExtensionOfString;
+			sourceTree = "<group>";
+		};
+		6CD3412323ECEF5800584264 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6C1CC8B823EB35DE00766192 /* PerfectPaperPasswordsAlgorithm.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD704A723EE4BA000F031FF /* KeyCell.swift in Sources */,
 				6CBE1B2023E8D3400056039C /* ViewController.swift in Sources */,
 				6CBE1B1C23E8D3400056039C /* AppDelegate.swift in Sources */,
+				6CD3410023EB944600584264 /* String+extension.swift in Sources */,
 				6CBE1B1E23E8D3400056039C /* SceneDelegate.swift in Sources */,
+				6C1CC8B923EB35DE00766192 /* PerfectPaperPasswordsAlgorithm.swift in Sources */,
 				6CBE1B3423E8D81D0056039C /* UInt128.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
