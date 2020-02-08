@@ -1,5 +1,5 @@
 # Perfect Paper Passwords
-Simulation of OTP system
+Simulation of OTP system. This system only provide one card and support counter of 128 bits.
 
 # Installation
 You don't need any installation aditional because it not have pods or something like that.
