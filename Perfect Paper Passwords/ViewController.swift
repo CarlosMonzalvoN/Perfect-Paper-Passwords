@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        contentAlphabetTextField.text = PerfectPaperPasswordsAlgorithm.runAlgorithm.alphabet
+        contentAlphabetTextField.text = PerfectPaperPasswordsAlgorithm.singleton.alphabet
         loadCurrentDataFromSave()
     }
     
@@ -32,9 +32,9 @@ class ViewController: UIViewController {
     }
     
     private func bindData() {
-        PerfectPaperPasswordsAlgorithm.runAlgorithm.generateNewSymmetricKey()
-        contentSymmetricKeyTextField.text = PerfectPaperPasswordsAlgorithm.runAlgorithm.getLegibleSymmetricKey()
-        let passwords = PerfectPaperPasswordsAlgorithm.runAlgorithm.algorithmPPP()
+        PerfectPaperPasswordsAlgorithm.singleton.generateNewSymmetricKey()
+        contentSymmetricKeyTextField.text = PerfectPaperPasswordsAlgorithm.singleton.getLegibleSymmetricKey()
+        let passwords = PerfectPaperPasswordsAlgorithm.singleton.runAlgorithm()
         data = PerfectPaperPasswordsAlgorithm.getCipheredArrays(from: passwords)
         saveCurrentData()
         collectionView?.reloadData()

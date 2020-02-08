@@ -11,11 +11,11 @@ import CryptoKit
 
 class PerfectPaperPasswordsAlgorithm {
     
-    static let runAlgorithm = PerfectPaperPasswordsAlgorithm()
+    static let singleton = PerfectPaperPasswordsAlgorithm()
     let alphabet = "! # % + 2  3 4 5 6 7 8 9 : = ? @ A B C D E F G H J K L M N P R S T U V W X Y Z a b c d e f g h i j k m n o p q r s t u v w x y z"
     var key = SymmetricKey(size: .bits256)
     
-    func algorithmPPP() -> [String]{
+    func runAlgorithm() -> [String]{
         let alphabetArray = alphabet.split(separator: " ")
         var page : [String] = []
         var counter : UInt128 = 0
